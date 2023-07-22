@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Buku extends Model
 {
     use HasFactory;
-    use \App\Http\Traits\UsesUuid;
-    protected $table = ['bukus'];
-    protected $guarded = ['id'];
-    protected $fillable = [
-    ];
-
 }

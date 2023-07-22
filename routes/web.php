@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\BukuController;
+use App\Http\Controllers\Dashboard\KategoriController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', function () {
 
 Route::prefix('dashboard')->group(function () {
     Route::resource('/', DashboardController::class, ['names' => 'dashboard.index']);
-    Route::resource('/buku', BukuController::class, ['names' => 'dashboard.buku.index']);
+    Route::resource('kategori', KategoriController::class, ['names' => 'dashboard.kategori']);
+    Route::resource('buku', BukuController::class, ['names' => 'dashboard.buku']);
 });
 
