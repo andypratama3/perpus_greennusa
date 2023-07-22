@@ -16,12 +16,10 @@ use App\Http\Controllers\Dashboard\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
-    return view('layouts.dashboard');
+    return view('welcome');
 });
+
 
 Route::prefix('dashboard')->group(function () {
     Route::resource('/', DashboardController::class, ['names' => 'dashboard.index']);

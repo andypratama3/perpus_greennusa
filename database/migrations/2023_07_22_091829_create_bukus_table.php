@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('bukus', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('judul');
+            $table->string('name');
             $table->string('nama_penulis');
             $table->string('tahun_terbit');
             $table->string('penerbit');
+            $table->string('slug');
             $table->timestamps();
         });
     }

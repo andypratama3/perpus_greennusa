@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -32,8 +32,15 @@
                         <td>{{$no++}}</td>
                         <td>{{ $kategori->name }}</td>
                         <td>
-                            <a href="{{ route('dashboard.kategori.edit',$kategori->slug) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Edit</a>
-                            <a href="{{ route('dashboard.kategori.destroy',$kategori->slug) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                            <a href="{{ route('dashboard.kategori.edit',$kategori->slug) }}" class="btn btn-primary"><i
+                                    class="fa fa-eye"></i> Edit</a>
+                            <a href="#" data-id="{{ $kategori->slug }}" class="btn btn-danger delete" title="Hapus">
+                                <form action="{{ route('dashboard.kategori.destroy', $kategori->slug) }}"
+                                    id="delete-{{ $kategori->slug }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                                <i class="fa fa-trash">
                         </td>
                     </tr>
                     @endforeach
@@ -42,5 +49,5 @@
         </div>
     </div>
 </div>
-
+@include('layouts.dashboard.script')
 @endsection

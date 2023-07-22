@@ -10,16 +10,12 @@ class Kategori extends Model
 {
     use HasFactory;
     use \App\Http\Traits\UsesUuid;
+    use \App\Http\Traits\HasSlug;
     protected $table = 'kategoris';
     protected $fillable = [
         'name',
     ];
 
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value). "-" .Str::random(4);
-    }
 
     public function getRouteKeyName()
     {

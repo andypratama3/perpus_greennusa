@@ -40,9 +40,10 @@ class KategoriController extends Controller
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Update');
     }
 
-    public function destroy(ActionKategoriDelete $actionKategoriDelete, $slug)
+    public function destroy(ActionKategoriDelete $actionKategoriDelete,Kategori $slug)
     {
         $actionKategoriDelete->execute($slug);
+
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Hapus');
     }
 }
