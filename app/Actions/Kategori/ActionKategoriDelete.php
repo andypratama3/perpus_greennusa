@@ -7,7 +7,7 @@ use App\Models\Kategori;
 
 class ActionKategoriDelete
 {
-    public function execute(Kategori $kategori)
+    public function execute($kategori)
     {
         $kategori->delete();
     }

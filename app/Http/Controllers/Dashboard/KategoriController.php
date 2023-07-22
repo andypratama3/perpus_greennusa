@@ -34,16 +34,15 @@ class KategoriController extends Controller
         return view('dashboard.kategori.edit', compact('kategori'));
     }
 
-    public function update(RequestKategori $request, ActionKategori $actionKategori, $slug)
+    public function update(RequestKategori $request, ActionKategori $actionKategori, Kategori $kategori)
     {
-        $actionKategori->execute($request, $slug);
+        $actionKategori->execute($request, $kategori);
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Update');
     }
 
-    public function destroy(ActionKategoriDelete $actionKategoriDelete,Kategori $slug)
+    public function destroy(ActionKategoriDelete $actionKategoriDelete, Kategori $kategori)
     {
-        $actionKategoriDelete->execute($slug);
-
+        $actionKategoriDelete->execute($kategori);
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Hapus');
     }
 }

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ActionKategori
 {
-    public function execute(Request $request, $slug)
+    public function execute(Request $request, $kategori)
     {
-        $kategori = Kategori::updateOrCreate(
-            ['slug' => $slug],
+        return Kategori::updateOrCreate(
+            ['slug' => $kategori->slug],
             [
                 'name' => $request->name,
             ]
