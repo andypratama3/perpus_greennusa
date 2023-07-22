@@ -20,4 +20,9 @@ class Kategori extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value). "-" .Str::random(4);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

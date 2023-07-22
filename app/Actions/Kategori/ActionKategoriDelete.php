@@ -7,10 +7,8 @@ use App\Models\Kategori;
 
 class ActionKategoriDelete
 {
-    public function execute($slug)
+    public function execute(Kategori $kategori)
     {
-    $kategori = Kategori::where('slug', $slug)->first;
-    $kategori->delete();
-
+        $kategori->delete();
     }
 }

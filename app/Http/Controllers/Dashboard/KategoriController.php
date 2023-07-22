@@ -17,31 +17,32 @@ class KategoriController extends Controller
         $kategoris = Kategori::select(['name','slug'])->get();
         return view('dashboard.kategori.index', compact('kategoris','no'));
     }
+
     public function create()
     {
         return view('dashboard.kategori.create');
     }
+
     public function store(RequestKategori $request, ActionKategori $actionKategori)
     {
-        $actionKategori->execute($request);
+        $actionKategori->execute($request, new Kategori);
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Tambahkan');
     }
-    public function edit($slug)
-    {
-        $kategori = Kategori::where('slug', $slug)->firstOrFail();
-        return view('dashboard.kategori.edit', compact('kategori'));
 
-    }
-    public function update(RequestKategori $request, ActionKategori $actionKategori)
+    public function edit(Kategori $kategori)
     {
-        $actionKategori->execute($request);
+        return view('dashboard.kategori.edit', compact('kategori'));
+    }
+
+    public function update(RequestKategori $request, ActionKategori $actionKategori, $slug)
+    {
+        $actionKategori->execute($request, $slug);
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Update');
     }
-    public function destroy(ActionKategoriDelete $actionKategoriDelete,$slug)
+
+    public function destroy(ActionKategoriDelete $actionKategoriDelete, $slug)
     {
         $actionKategoriDelete->execute($slug);
         return redirect()->route('dashboard.kategori.index')->with('success','Kategori Berhasil Di Hapus');
     }
-
-
 }

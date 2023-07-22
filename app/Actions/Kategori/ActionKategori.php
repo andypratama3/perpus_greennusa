@@ -3,18 +3,17 @@
 namespace App\Actions\Kategori;
 
 use App\Models\Kategori;
-use Symfony\Component\HttpFoundation\Request;
-
+use Illuminate\Http\Request;
 
 class ActionKategori
 {
-    public function execute(Request $request)
+    public function execute(Request $request, $slug)
     {
-    $kategori = Kategori::updateOrCreate(
-        [
-            'name' => $request->name,
-        ]);
-    $kategori->save();
-
+        $kategori = Kategori::updateOrCreate(
+            ['slug' => $slug],
+            [
+                'name' => $request->name,
+            ]
+        );
     }
 }

@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-center">Edit Kategori</h5>
-            <form action="{{ route('dashboard.kategori.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('dashboard.kategori.update', $kategori->slug) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row mb-3">
